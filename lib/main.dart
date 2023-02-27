@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, override_on_non_overriding_member, unnecessary_string_interpolations
+// ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, override_on_non_overriding_member, unnecessary_string_interpolations, sized_box_for_whitespace
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -71,366 +71,391 @@ class _demoState extends State<demo> {
 
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+
     return WillPopScope(onWillPop:() => _onBackButtonPressed (context),
         child: Scaffold(
-        appBar: AppBar(centerTitle: true,
-        title: Text("Number\nPuzzle🧩",style:TextStyle(color:Colors.black,letterSpacing:1,fontFamily:"fonts")),
-        actions: [
-          Icon(Icons.info_outline,color:Colors.black,size:25),SizedBox(width:10),
-        ],
-        backgroundColor:Colors.white,elevation:0,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  Container(
-                    height: 43,
-                    width: 190,
-                    decoration: BoxDecoration(
-                        color: checkwin == 0 ? Colors.black : Colors.green,
-                        borderRadius: BorderRadius.vertical(bottom: Radius.circular(25),top:Radius.circular(60))),
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(),
-                    child:    checkwin == 0 ? Text(
-                        "Player's Moves :-  $cnt" ,
-                      style: TextStyle(fontSize: 18,color:Colors.white),
-                    ) : Text("$msg"),
-                  ),
-                ],
-              )),
-          Row(
-            children: [
-              InkWell(
-                  splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                  onTap:() {
-                    if(a[1]=="" && checkwin==0)
-                    {
-                      a[1]=a[0];
-                      a[0]="";
-                      cnt++;
-                      win();
-                    }
-                    else if(a[3]=="" && checkwin==0)
-                    {
-                      a[3]=a[0];
-                      a[0]="";
-                      cnt++;
-                      win();
-                    }
-                    setState(() {});
-                  },
-                  child: Container(
-                    height:85,width:85,
-                    margin:EdgeInsets.only(left:45,top:30),
-                    child:abc(0),
-                  )
-              ),
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[0]=="" && checkwin==0)
-                  {
-                    a[0]=a[1];
-                    a[1]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[2]=="" && checkwin==0)
-                  {
-                    a[2]=a[1];
-                    a[1]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[4]=="" && checkwin==0)
-                  {
-                    a[4]=a[1];
-                    a[1]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  height:85,width:85,
-                  margin:EdgeInsets.only(left:10,top:30),
-                  child:abc(1),
-                ),
-              ),
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[1]=="" && checkwin==0)
-                  {
-                    a[1]=a[2];
-                    a[2]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[5]=="" && checkwin==0)
-                  {
-                    a[5]=a[2];
-                    a[2]="";
-                    cnt++;
-                    win();
-                  }
-
-                  setState(() {});
-                },
-                child: Container(
-                  height:85,width:85,
-                  margin:EdgeInsets.only(left:10,top:30),
-                  child:abc(2),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[0]=="" && checkwin==0)
-                  {
-                    a[0]=a[3];
-                    a[3]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[4]=="" && checkwin==0)
-                  {
-                    a[4]=a[3];
-                    a[3]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[6]=="" && checkwin==0)
-                  {
-                    a[6]=a[3];
-                    a[3]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  margin:EdgeInsets.only(left:45,top:10),
-                  height:85,width:85,
-                  child:abc(3),
-                ),
-              ),
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[1]=="" && checkwin==0)
-                  {
-                    a[1]=a[4];
-                    a[4]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[5]=="" && checkwin==0)
-                  {
-                    a[5]=a[4];
-                    a[4]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[7]=="" && checkwin==0)
-                  {
-                    a[7]=a[4];
-                    a[4]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[3]=="" && checkwin==0)
-                  {
-                    a[3]=a[4];
-                    a[4]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  margin:EdgeInsets.only(left:10,top:10),
-                  height:85,width:85,
-                  child:abc(4),
-                ),
-              ),
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[2]=="" && checkwin==0)
-                  {
-                    a[2]=a[5];
-                    a[5]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[4]=="" && checkwin==0)
-                  {
-                    a[4]=a[5];
-                    a[5]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[8]=="" && checkwin==0)
-                  {
-                    a[8]=a[5];
-                    a[5]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  height:85,width:85,
-                  margin:EdgeInsets.only(left:10,top:10),
-                  child:abc(5),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[3]=="" && checkwin==0)
-                  {
-                    a[3]=a[6];
-                    a[6]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[7]=="" && checkwin==0)
-                  {
-                    a[7]=a[6];
-                    a[6]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  margin:EdgeInsets.only(left:45,top:10),
-                  height:85,width:85,
-                  child:abc(6),
-                ),
-              ),
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[6]=="" && checkwin==0)
-                  {
-                    a[6]=a[7];
-                    a[7]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[4]=="" && checkwin==0)
-                  {
-                    a[4]=a[7];
-                    a[7]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[8]=="" && checkwin==0)
-                  {
-                    a[8]=a[7];
-                    a[7]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  margin:EdgeInsets.only(left:10,top:10),
-                  height:85,width:85,
-                  child:abc(7),
-                ),
-              ),
-              InkWell(
-                splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
-                onTap:() {
-                  if(a[5]=="" && checkwin==0)
-                  {
-                    a[5]=a[8];
-                    a[8]="";
-                    cnt++;
-                    win();
-                  }
-                  else if(a[7]=="" && checkwin==0)
-                  {
-                    a[7]=a[8];
-                    a[8]="";
-                    cnt++;
-                    win();
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  margin:EdgeInsets.only(left:10,top:10),
-                  height:85,width:85,
-                  child:abc(8),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-              flex: 2,
-              child: Container(
-                height: 40,
-                width: double.infinity,
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(),
-                child:Row(
+          // appBar: AppBar(
+          //     centerTitle: true,
+          //     title: Text("Number\nPuzzle🧩",style:TextStyle(color:Colors.white,letterSpacing:1,fontFamily:"fonts")),
+          //     actions: [
+          //
+          //     ],
+          //     backgroundColor:Colors.black
+          // ),
+            body: Stack(
+              children: [
+                Image(image: AssetImage("myimg/wooden.jpg"),
+                    height:size.height,fit:BoxFit.fill),
+                Column(
                   children: [
-                    Container(
-                      height:40,width:120,
-                      margin: EdgeInsets.only(left:40),
-                      child: GFButton(
-                        elevation:10,
-                        onPressed: (){
-                          cnt=0;
-                          a=[];
-                          msg="";
-                          number();
-                          setState(() {});
-                        },
-                        text: "RESET",textStyle:TextStyle(letterSpacing:1),
-                        icon: Icon(Icons.clear_rounded,color:Colors.red),
-                        color:Colors.black,
-                      ),
+                    Expanded(
+                      flex:2,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left:140,top:30),
+                                  child: Text("Number\nPuzzle🧩",style:TextStyle(color:Colors.white,
+                                      letterSpacing:1,fontFamily:"fonts", fontSize:20
+                                  )),
+                                ),
+                                Container(
+                                  margin:EdgeInsets.only(left:95,top:20),
+                                  child: Icon(Icons.info_rounded,size:25,color:Colors.white),
+                                )
+                              ],
+                            ),
+                            Container(
+                              height: 43,
+                              width: 190,
+                              decoration: BoxDecoration(
+                                  color: checkwin == 0 ? Colors.black : Colors.green,
+                                  borderRadius: BorderRadius.vertical(bottom: Radius.circular(25),
+                                      top:Radius.circular(60))),
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(top:50),
+                              child:    checkwin == 0 ? Text(
+                                "Player's Moves :-  $cnt" ,
+                                style: TextStyle(fontSize: 18,color:Colors.white),
+                              ) : Text("$msg"),
+                            ),
+                          ],
+                        )),
+                    SizedBox(height:50),
+                    Row(
+                      children: [
+                        InkWell(
+                            splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                            onTap:() {
+                              if(a[1]=="" && checkwin==0)
+                              {
+                                a[1]=a[0];
+                                a[0]="";
+                                cnt++;
+                                win();
+                              }
+                              else if(a[3]=="" && checkwin==0)
+                              {
+                                a[3]=a[0];
+                                a[0]="";
+                                cnt++;
+                                win();
+                              }
+                              setState(() {});
+                            },
+                            child: Container(
+                              height:85,width:85,
+                              margin:EdgeInsets.only(left:43,top:30),
+                              child:abc(0),
+                            )
+                        ),
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[0]=="" && checkwin==0)
+                            {
+                              a[0]=a[1];
+                              a[1]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[2]=="" && checkwin==0)
+                            {
+                              a[2]=a[1];
+                              a[1]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[4]=="" && checkwin==0)
+                            {
+                              a[4]=a[1];
+                              a[1]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            height:85,width:85,
+                            margin:EdgeInsets.only(left:10,top:30),
+                            child:abc(1),
+                          ),
+                        ),
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[1]=="" && checkwin==0)
+                            {
+                              a[1]=a[2];
+                              a[2]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[5]=="" && checkwin==0)
+                            {
+                              a[5]=a[2];
+                              a[2]="";
+                              cnt++;
+                              win();
+                            }
+
+                            setState(() {});
+                          },
+                          child: Container(
+                            height:85,width:85,
+                            margin:EdgeInsets.only(left:10,top:30),
+                            child:abc(2),
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      height:40,width:125,
-                      margin: EdgeInsets.only(left:40),
-                      child: GFButton(
-                        elevation:10,
-                        onPressed: (){
-                          cnt=0;
-                          a=[];
-                          msg="";
-                          number();
-                          setState(() {});
-                        },
-                        text: "NEW GAME",textStyle:TextStyle(letterSpacing:1),
-                        icon: Icon(Icons.not_started,color:Colors.green),
-                        color:Colors.black,
-                      ),
-                    )
+                    Row(
+                      children: [
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[0]=="" && checkwin==0)
+                            {
+                              a[0]=a[3];
+                              a[3]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[4]=="" && checkwin==0)
+                            {
+                              a[4]=a[3];
+                              a[3]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[6]=="" && checkwin==0)
+                            {
+                              a[6]=a[3];
+                              a[3]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            margin:EdgeInsets.only(left:43,top:10),
+                            height:85,width:85,
+                            child:abc(3),
+                          ),
+                        ),
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[1]=="" && checkwin==0)
+                            {
+                              a[1]=a[4];
+                              a[4]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[5]=="" && checkwin==0)
+                            {
+                              a[5]=a[4];
+                              a[4]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[7]=="" && checkwin==0)
+                            {
+                              a[7]=a[4];
+                              a[4]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[3]=="" && checkwin==0)
+                            {
+                              a[3]=a[4];
+                              a[4]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            margin:EdgeInsets.only(left:10,top:10),
+                            height:85,width:85,
+                            child:abc(4),
+                          ),
+                        ),
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[2]=="" && checkwin==0)
+                            {
+                              a[2]=a[5];
+                              a[5]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[4]=="" && checkwin==0)
+                            {
+                              a[4]=a[5];
+                              a[5]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[8]=="" && checkwin==0)
+                            {
+                              a[8]=a[5];
+                              a[5]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            height:85,width:85,
+                            margin:EdgeInsets.only(left:10,top:10),
+                            child:abc(5),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[3]=="" && checkwin==0)
+                            {
+                              a[3]=a[6];
+                              a[6]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[7]=="" && checkwin==0)
+                            {
+                              a[7]=a[6];
+                              a[6]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            margin:EdgeInsets.only(left:43,top:10),
+                            height:85,width:85,
+                            child:abc(6),
+                          ),
+                        ),
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[6]=="" && checkwin==0)
+                            {
+                              a[6]=a[7];
+                              a[7]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[4]=="" && checkwin==0)
+                            {
+                              a[4]=a[7];
+                              a[7]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[8]=="" && checkwin==0)
+                            {
+                              a[8]=a[7];
+                              a[7]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            margin:EdgeInsets.only(left:10,top:10),
+                            height:85,width:85,
+                            child:abc(7),
+                          ),
+                        ),
+                        InkWell(
+                          splashFactory:NoSplash.splashFactory,highlightColor:Colors.transparent,
+                          onTap:() {
+                            if(a[5]=="" && checkwin==0)
+                            {
+                              a[5]=a[8];
+                              a[8]="";
+                              cnt++;
+                              win();
+                            }
+                            else if(a[7]=="" && checkwin==0)
+                            {
+                              a[7]=a[8];
+                              a[8]="";
+                              cnt++;
+                              win();
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            margin:EdgeInsets.only(left:10,top:10),
+                            height:85,width:85,
+                            child:abc(8),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                        flex:2,
+                        child: Container(
+                          height: 40,
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(),
+                          child:Row(
+                            children: [
+                              Container(
+                                height:40,width:120,
+                                margin: EdgeInsets.only(left:40,top:50),
+                                child: GFButton(
+                                  elevation:10,
+                                  onPressed: (){
+                                    cnt=0;
+                                    a=[];
+                                    msg="";
+                                    number();
+                                    setState(() {});
+                                  },
+                                  text: "RESET",textStyle:TextStyle(letterSpacing:1),
+                                  icon: Icon(Icons.clear_rounded,color:Colors.red),
+                                  color:Colors.black,
+                                ),
+                              ),
+                              Container(
+                                height:40,width:125,
+                                margin: EdgeInsets.only(left:34,top:50),
+                                child: GFButton(
+                                  elevation:10,
+                                  onPressed: (){
+                                    cnt=0;
+                                    a=[];
+                                    msg="";
+                                    number();
+                                    setState(() {});
+                                  },
+                                  text: "NEW GAME",textStyle:TextStyle(letterSpacing:1),
+                                  icon: Icon(Icons.not_started,color:Colors.green),
+                                  color:Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
                   ],
                 ),
-              )),
-        ],
-      ),
-    ));
+              ],
+            )
+        ));
   }
 
   Container abc(int j)
